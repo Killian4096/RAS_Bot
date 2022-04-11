@@ -5,6 +5,7 @@ from discord import utils
 from discord.ext import commands
 import cv2
 
+#SETTINGS
 PRINTER_IMAGE_NAME = "printer_picture.png"
 PRINTER_IMAGE_LOCATION = "printer_images"
 
@@ -42,4 +43,3 @@ class PrinterCommandsCog(commands.Cog):
 
 def setup(bot):
     bot.add_cog(PrinterCommandsCog(bot))
-    print("Printer Commands Cog initialized")

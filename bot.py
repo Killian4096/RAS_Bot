@@ -17,8 +17,17 @@ COGS_LOCATION = "cogs"
 def loadCogs(bot):
     for file in os.listdir(COGS_LOCATION):
         if file.endswith(".py"):
-            cogname, ext = os.path.splitext(file)
-            bot.load_extension(COGS_LOCATION + "." + cogname)
+            cogname, cogext = os.path.splitext(file)
+            cogpath = cogname + cogext
+            try:
+                bot.load_extension(COGS_LOCATION + "." + cogname)
+                cog = bot.get_cog(COGS_LOCATION + "." + cogname)
+                if cog == None:
+                    print(cogname + " documentation could not be properly accessed.")
+                else:
+                    print(cog.qualified_name + " loaded")
+            except Exception as e:
+                print(str(e))
 
 bot = commands.Bot(command_prefix=COMMAND_PREFIX)
 loadCogs(bot)
