@@ -1,16 +1,18 @@
-#!/usr/bin/env python3.10
 import os
 
 import discord
 from discord import utils
 from discord.ext import commands
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
+
+#Put token here
+from discord_bot_token import DISCORD_BOT_TOKEN
 
 COMMAND_PREFIX = "!RB "
 COGS_LOCATION = "cogs"
 
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+#load_dotenv()
+#TOKEN = os.getenv('DISCORD_TOKEN')
 
 def loadCogs(bot):
     for file in os.listdir(COGS_LOCATION):
@@ -37,4 +39,4 @@ async def on_ready():
 async def ping(ctx):
     await ctx.channel.send("pong")
 
-bot.run(TOKEN)
+bot.run(DISCORD_BOT_TOKEN)

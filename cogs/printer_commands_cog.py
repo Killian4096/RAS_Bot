@@ -1,4 +1,3 @@
-#!/usr/bin/env python3.10
 import os
 
 import discord
@@ -30,6 +29,10 @@ class PrinterCommandsCog(commands.Cog):
     async def printerpicture(self, ctx):
         location = save_printer_image()
         await ctx.channel.send(file=discord.File(location))
+
+    @commands.command()
+    async def printpicture(self, ctx):
+        await ctx.invoke(self.bot.get_command('printerpicture'))
     
     @commands.command()
     async def printerstatus(self, ctx):
