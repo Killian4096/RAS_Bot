@@ -17,32 +17,29 @@ COGS_LOCATION = "cogs"
 def loadCogs(bot):
     for file in os.listdir(COGS_LOCATION):
         if file.endswith(".py"):
-            cogname, cogext = os.path.splitext(file)
-            cogpath = cogname + cogext
             try:
-                bot.load_extension(COGS_LOCATION + "." + cogname)
-                cog = bot.get_cog(COGS_LOCATION + "." + cogname)
-                if cog == None:
-                    print(cogname + " documentation could not be properly accessed.")
-                else:
-                    print(cog.qualified_name + " loaded")
+                cogfile, cogext = os.path.splitext(file)
+                cogpath = cogfile + cogext
+                bot.load_extension(COGS_LOCATION + "." + cogfile)
             except Exception as e:
                 print(str(e))
+            else:
+                print(cogpath + " loaded.")
 
 bot = commands.Bot(command_prefix=COMMAND_PREFIX)
 loadCogs(bot)
 
 @bot.event
 async def on_connect():
-    print(f'{bot.user} connected')
+    print(f'{bot.user} connected.')
 
 @bot.event
 async def on_disconnect():
-    print(f'{bot.user} disconnected')
+    print(f'{bot.user} disconnected.')
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} ready')
+    print(f'{bot.user} ready.')
 
 @bot.command()
 async def ping(ctx):
