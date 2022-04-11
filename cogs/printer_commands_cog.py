@@ -6,7 +6,7 @@ from discord.ext import commands
 import cv2
 
 PRINTER_IMAGE_NAME = "printer_picture.png"
-PRINTER_IMAGE_LOCATION = "images"
+PRINTER_IMAGE_LOCATION = "printer_images"
 
 
 def save_printer_image():
